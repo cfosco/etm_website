@@ -15,15 +15,27 @@
     <!-- Title card -->
     <section id="title-card">
         <h1>Leveraging Temporal Context in Low Representational Power Regimes</h1>
-        <h4>Site under construction</h4>
+        <div>
         <p>Camilo Fosco, Souyoung Jin, Emilie Josephs, Aude Oliva</p>
-        <div class="buttons">
-            <a href="paper.pdf" target="_blank">Paper</a>
-            <a href="https://github.com/your-repo" target="_blank">Code</a>
+        <p>MIT CSAIL</p>
+        <p>CVPR 2023</p>
         </div>
-        <img src="imgs/modified_teaser1.png" alt="Title Figure">
-        <img src="imgs/modified_teaser2.png" alt="Title Figure">
+        <div class="buttons">
+            <a href="ETM_CVPR2023_cameraready_review.pdf" target="_blank">Paper</a>
+            <a href="ETM_CVPR2023_cameraready_supplemental.pdf" target="_blank">Supplemental</a>
+            <a href="https://github.com/cfosco/etm_project" target="_blank">Code</a>
+        </div>
+        <div style="display: flex;">
+            <img src="imgs/modified_teaser1.png" alt="Events">
+            <img src="imgs/modified_teaser2.png" alt="ETM">
+        </div>
     </section>
+
+    <div class="separator separator-1">
+        <svg viewBox="0 0 100 10" preserveAspectRatio="none">
+            <path d="M0,10 C50,0 50,10 100,10 V10 H0 Z"></path>
+        </svg>
+    </div>
 
     <!-- Abstract -->
     <section id="abstract">
@@ -58,26 +70,14 @@
     <section id="method">
     <h2>Proposed Approach</h2>
     <p>
-      Our proposed approach has two main components: the Event Transition Matrix (ETM) and the pre-training using this matrix. ETM is an efficient way to construct a knowledge base about the temporal relation between events in video scenes. We leverage these relations to help recognize current events or predict past or future events in the input video snippet.
-    </p>
-    <img src="imgs/proposed_approach_2.png" alt="Overview of the proposed approach for pre-training with ETM" />
-    <p>
+      Our proposed approach has two main components: the Event Transition Matrix (ETM) and the pre-training using this matrix. The ETM is an efficient way to describe the temporal relation between events in videos. We leverage these relations to help recognize current events or predict past or future events given an input video snippet.
       We first create the ETM by computing the frequency with which each event comes before and after every other event, incorporating a decay function to account for temporal distance between events. Then, we normalize the matrix to obtain the row-wise and column-wise normalized matrices.
     </p>
     <p>
       For pre-training with the ETM, we use a model with three modules: one for predicting the present event, one for predicting past events, and one for predicting future events. We train the model to minimize the loss functions for these predictions, incorporating the ETM to capture the temporal context.
     </p>
+    <img src="imgs/proposed_approach_2.png" alt="Overview of the proposed approach for pre-training with ETM" />
     <p>
-      Mathematically, we define the ETM update as: <br />
-      M(y<sub>l</sub>, y<sub>m</sub>) += δ(m - l)
-    </p>
-    <p>
-      The row-wise normalized matrix is defined as: <br />
-      M<sup>R</sup>(i, j) = M(i, j) / Σ<sub>k=0</sub><sup>N</sup> M(i, k)
-    </p>
-    <p>
-      The training objective is: <br />
-      L = ω<sub>q</sub>L<sub>q</sub> + ω<sub>c</sub>L<sub>c</sub> + ω<sub>r</sub>L<sub>r</sub>
     </p>
   </section>
   
@@ -88,8 +88,12 @@
         <p>
            We show that low-complexity models benefit more from the ETM protocol than larger models with more representational power. The figures below show performance comparisons, with and without ETM training, on several well-known model families.
         </p>
-        <img src="imgs/perf_vs_flops_EK100_actionrec_movinet+x3d.png" alt="Result 1">
-        <img src="imgs/perf_vs_flops_EK100_actionant_movinet+x3d.png" alt="Result 2">
+        <div style="display: flex;">
+            <img src="imgs/perf_vs_flops_EK100_actionrec_movinet+x3d.png" alt="Result 1">
+            <img src="imgs/perf_vs_flops_EK100_actionant_movinet+x3d.png" alt="Result 2">
+        </div>
+
+        <img src="imgs/qual_aa_2.png" alt="Qualitative examples for Action Anticipation">
     </section>
 
     </div>  
@@ -97,26 +101,28 @@
     <!-- Team -->
     <section id="team">
         <h2>Team</h2>
+        <div style="display: flex;">
         <div class="team-member">
             <img src="imgs/Camilo.png" alt="Camilo Fosco">
             <p>Camilo Fosco</p>
-            <p>camilolu@mit.edu</p>
+            <p>camilolu [at] mit [dot] edu</p>
         </div>
         <div class="team-member">
             <img src="imgs/souyoung.png" alt="SouYoung Jin">
             <p>SouYoung Jin</p>
-            <p>souyoung@mit.edu</p>
+            <p>souyoung [at] mit [dot] edu</p>
         </div>
         <div class="team-member">
             <img src="imgs/Emilie.webp" alt="Emilie Josephs">
             <p>Emilie Josephs</p>
-            <p>ejosephs@mit.edu</p>
+            <p>ejosephs [at] mit [dot] edu</p>
         </div>
         <div class="team-member">
             <img src="imgs/Aude.jpg" alt="Aude Oliva">
             <p>Aude Oliva</p>
-            <p>oliva@mit.edu</p>
+            <p>oliva [at] mit [dot] edu</p>
         </div>
+    </div>
     </section>
 
 
