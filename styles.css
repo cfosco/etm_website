@@ -84,6 +84,14 @@ h1, h2 {
     gap: 2rem;
 }
 
+#team .authors {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
 #team .team-member {
     display: flex;
     flex-direction: column;
@@ -92,9 +100,10 @@ h1, h2 {
     text-align: center;
 }
 
-
 #team img {
+    min-width: 150px;
     width: 150px;
+    min-height: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
@@ -126,7 +135,6 @@ h1, h2 {
 }
 
 img {
-    max-width: 80%; /* Adjust this value as needed */
     max-height: 300px; /* Adjust this value as needed */
     display: block;
     margin: 1rem auto; /* Center the image horizontally */
