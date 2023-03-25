@@ -1,10 +1,10 @@
 /* General styles */
 body {
-    font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
     color: #333;
+    font-family: 'Open Sans', sans-serif;
 }
 
 img {
@@ -33,6 +33,54 @@ h1, h2 {
 }
 
 
+.buttons a {
+    color: #fff; /* Updated: Set the text and icon color to white */
+
+    display: inline-flex; /* Updated: Use flex to align icon and text */
+    align-items: center;
+}
+
+.buttons a i {
+    margin-right: 0.5em; /* Updated: Add spacing between icon and text */
+}
+
+/* Fonts */
+h1, h2, h3, h4, h5, h6, a {
+    font-family: 'Merriweather', serif;
+    color: #3a3a3a; /* Updated: darker text color for headings */
+}
+
+#title-card p {
+    font-weight: bold;
+    color: #0066cc;
+}
+
+#abstract p, #method p {
+    text-indent: 1.5em;
+    text-align: justify; /* Updated: Justify text for better appearance */
+}
+
+h2 {
+    position: relative;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+/* Add bottom border and shadow to h2 elements */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #0066cc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
 /* Title card */
 #title-card {
     text-align: center;
@@ -44,6 +92,26 @@ h1, h2 {
     margin-top: 1rem;
     gap: 1rem;
 }
+
+#title-card a {
+    text-decoration: none;
+    color: #4a4a4a;
+}
+
+#title-card a:hover {
+    color: #2513be;
+}
+
+#title-card .authors {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+#title-card p {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+}
+
 
 #title-card .buttons a {
     background-color: #333;
