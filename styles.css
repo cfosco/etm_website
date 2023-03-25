@@ -22,6 +22,28 @@ section {
     gap: 2rem;
 }
 
+@keyframes gradient {
+    0% {
+      background-position: -50%;
+    }
+    100% {
+      background-position: 150%;
+    }
+  }
+
+/* Make h1 larger and add gradient animation */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0066cc;
+    background: linear-gradient(90deg, #05498d, #3a3a3a, #05498d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 7s ease infinite;
+    background-size: 300%;
+
+}
+
 h1, h2 {
     margin-bottom: 1rem;
 }
@@ -50,15 +72,6 @@ h1, h2, h3, h4, h5, h6, a {
     color: #3a3a3a; /* Updated: darker text color for headings */
 }
 
-#title-card p {
-    font-weight: bold;
-    color: #0066cc;
-}
-
-#abstract p, #method p {
-    text-indent: 1.5em;
-    text-align: justify; /* Updated: Justify text for better appearance */
-}
 
 h2 {
     position: relative;
@@ -86,6 +99,13 @@ h2::after {
     text-align: center;
 }
 
+
+
+#abstract p, #method p {
+    text-indent: 1.5em;
+    text-align: justify; /* Updated: Justify text for better appearance */
+}
+
 #title-card .buttons {
     display: flex;
     justify-content: center;
@@ -109,7 +129,8 @@ h2::after {
 
 #title-card p {
     font-size: 1.15rem;
-    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #0066cc;
 }
 
 
@@ -127,6 +148,37 @@ h2::after {
     transform: translateY(-3px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
+
+
+.authors {
+    font-size: 1.2em;
+    margin-bottom: 0em;
+}
+
+.authors a {
+    color: #333;
+    text-decoration: none;
+}
+
+.authors a:hover {
+    color: #777;
+}
+
+.affiliation, .cvpr-link {
+    font-size: 1.1em;
+    margin-bottom: 0.1em;
+}
+
+.affiliation a, .cvpr-link a {
+    color: #333;
+    text-decoration: none;
+}
+
+.affiliation a:hover, .cvpr-link a:hover {
+    color: #777;
+}
+
+
 
 /* Abstract, Method, Results */
 #abstract img:hover,
