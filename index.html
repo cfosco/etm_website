@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leveraging Temporal Context in Low Representational Power Regimes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+
+<body>
+    <div class="content-container">
+
+    <!-- Title card -->
+    <section id="title-card">
+        <h1>Leveraging Temporal Context in Low Representational Power Regimes</h1>
+        <p>Camilo Fosco, Souyoung Jin, Emilie Josephs, Aude Oliva</p>
+        <div class="buttons">
+            <a href="paper.pdf" target="_blank">Paper</a>
+            <a href="https://github.com/your-repo" target="_blank">Code</a>
+        </div>
+        <img src="imgs/modified_teaser1.png" alt="Title Figure">
+        <img src="imgs/modified_teaser2.png" alt="Title Figure">
+    </section>
+
+    <!-- Abstract -->
+    <section id="abstract">
+        <h2>Abstract</h2>
+        <p>Computer vision models are excellent at identifying and
+            exploiting regularities in the world. However, it is com-
+            putationally costly to learn these regularities from scratch.
+            This presents a challenge for low-parameter models, like
+            those running on edge devices (e.g. smartphones). Can
+            the performance of models with low representational power
+            be improved by supplementing training with additional in-
+            formation about these statistical regularities? We explore
+            this in the domains of action recognition and action antic-
+            ipation, leveraging the fact that actions are typically em-
+            bedded in stereotypical sequences. We introduce the Event
+            Transition Matrix (ETM), computed from action labels in an
+            untrimmed video dataset, which captures the temporal con-
+            text of a given action, operationalized as the likelihood that
+            it was preceded or followed by each other action in the set.
+            We show that including information from the ETM during
+            training improves action recognition and anticipation per-
+            formance on various egocentric video datasets. Through
+            ablation and control studies, we show that the coherent se-
+            quence of information captured by our ETM is key to this
+            effect, and we find that the benefit of this explicit represen-
+            tation of temporal context is most pronounced for smaller
+            models. </p>
+        <img src="imgs/teaser_fig_v3.png" alt="Main results">
+    </section>
+
+    <!-- Method -->
+    <section id="method">
+    <h2>Proposed Approach</h2>
+    <p>
+      Our proposed approach has two main components: the Event Transition Matrix (ETM) and the pre-training using this matrix. ETM is an efficient way to construct a knowledge base about the temporal relation between events in video scenes. We leverage these relations to help recognize current events or predict past or future events in the input video snippet.
+    </p>
+    <img src="imgs/proposed_approach_2.png" alt="Overview of the proposed approach for pre-training with ETM" />
+    <p>
+      We first create the ETM by computing the frequency with which each event comes before and after every other event, incorporating a decay function to account for temporal distance between events. Then, we normalize the matrix to obtain the row-wise and column-wise normalized matrices.
+    </p>
+    <p>
+      For pre-training with the ETM, we use a model with three modules: one for predicting the present event, one for predicting past events, and one for predicting future events. We train the model to minimize the loss functions for these predictions, incorporating the ETM to capture the temporal context.
+    </p>
+    <p>
+      Mathematically, we define the ETM update as: <br />
+      M(y<sub>l</sub>, y<sub>m</sub>) += δ(m - l)
+    </p>
+    <p>
+      The row-wise normalized matrix is defined as: <br />
+      M<sup>R</sup>(i, j) = M(i, j) / Σ<sub>k=0</sub><sup>N</sup> M(i, k)
+    </p>
+    <p>
+      The training objective is: <br />
+      L = ω<sub>q</sub>L<sub>q</sub> + ω<sub>c</sub>L<sub>c</sub> + ω<sub>r</sub>L<sub>r</sub>
+    </p>
+  </section>
+  
+
+    <!-- Results -->
+    <section id="results">
+        <p>
+           We show that low-complexity models benefit more from the ETM protocol than larger models with more representational power. The figures below show performance comparisons, with and without ETM training, on several well-known model families.
+        </p>
+        <h2>Results</h2>
+        <img src="imgs/perf_vs_flops_EK100_actionrec_movinet+x3d.png" alt="Result 1">
+        <img src="imgs/perf_vs_flops_EK100_actionant_movinet+x3d.png" alt="Result 2">
+    </section>
+
+    </div>  
+
+    <!-- Team -->
+    <section id="team">
+        <h2>Team</h2>
+        <div class="team-member">
+            <img src="imgs/Camilo.png" alt="Camilo Fosco">
+            <p>Camilo Fosco</p>
+            <p>camilolu@mit.edu</p>
+        </div>
+        <div class="team-member">
+            <img src="imgs/souyoung.png" alt="SouYoung Jin">
+            <p>SouYoung Jin</p>
+            <p>souyoung@mit.edu</p>
+        </div>
+        <div class="team-member">
+            <img src="imgs/Emilie.webp" alt="Emilie Josephs">
+            <p>Emilie Josephs</p>
+            <p>ejosephs@mit.edu</p>
+        </div>
+        <div class="team-member">
+            <img src="imgs/Aude.jpg" alt="Aude Oliva">
+            <p>Aude Oliva</p>
+            <p>oliva@mit.edu</p>
+        </div>
+    </section>
+
+
+
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const titleCard = document.getElementById('title-card');
+            const mouseOverlay = document.createElement('div');
+            mouseOverlay.classList.add('mouse-overlay');
+            document.body.appendChild(mouseOverlay);
+        
+            titleCard.addEventListener('mousemove', (event) => {
+                mouseOverlay.style.display = 'block';
+                mouseOverlay.style.top = event.clientY - mouseOverlay.offsetHeight / 2 + 'px';
+                mouseOverlay.style.left = event.clientX - mouseOverlay.offsetWidth / 2 + 'px';
+            });
+        
+            titleCard.addEventListener('mouseleave', () => {
+                mouseOverlay.style.display = 'none';
+            });
+        });
+    </script> -->
+</body>
+</html>
